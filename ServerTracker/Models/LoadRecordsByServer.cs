@@ -61,13 +61,11 @@ namespace ServerTracker.Models
                 var totalRamLoads = 0;
                 while (index >= 0 && dateTimeNow.AddMinutes(-minutes * minutesInRate) <= loadRecords[index].DateTime)
                 {
-                    Debug.WriteLine(loadRecords[index--].RamLoad);
                     sumOfRamLoads += loadRecords[index--].RamLoad;
                     totalRamLoads++;
                 }
                 var averageRamLoads = totalRamLoads != 0 ? sumOfRamLoads/totalRamLoads : 0.0;
 
-                Debug.WriteLine(sumOfRamLoads + " " + totalRamLoads);
                 averageRamLoadsForLastRateByMinute.Add(averageRamLoads);
             }
 
